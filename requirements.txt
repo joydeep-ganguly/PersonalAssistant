@@ -1,0 +1,62 @@
+# Core dependencies
+python-dotenv
+pydantic
+
+# LangChain ecosystem
+langchain
+langchain-community
+langchain-core
+langchain-ollama
+langchain-openai
+langgraph
+langsmith
+langchain-google-genai
+langchain_mcp_adapters
+
+# LangGraph checkpointing
+langgraph-checkpoint-sqlite
+langgraph-checkpoint-postgres
+
+# Document processing
+pymupdf
+pymupdf4llm
+markitdown[all]
+docutils
+
+# NLP
+nltk
+numpy
+tiktoken
+
+# API clients
+ollama
+openai
+google-genai
+tavily-python
+ddgs
+
+# Web scraping
+beautifulsoup4
+lxml
+
+# Database
+pymysql
+psycopg
+psycopg-binary
+
+# Web framework
+streamlit
+fastapi
+fastapi[standard]
+
+# Media processing
+youtube-transcript-api
+
+# Additional tools
+textblob
+markdown2
+xhtml2pdf
+nest_asyncio
+e2b-code-interpreter
+yfinance
+fastmcp
