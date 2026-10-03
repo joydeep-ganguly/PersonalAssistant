@@ -1,0 +1,21 @@
+FROM python:3.13-slim
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    BACKEND_URL=http://localhost:8002
+
+RUN useradd --create-home --uid 1000 appuser
+WORKDIR /app
+
+COPY requirements-frontend.txt .
+RUN pip install -r requirements-frontend.txt
+
+COPY server/03_streamlit_client.py ./server/03_streamlit_client.py
+
+USER appuser
+EXPOSE 8501
+
+CMD ["streamlit", "run", "server/03_streamlit_client.py", \
+     "--server.port=8501", "--server.address=0.0.0.0", \
+     "--server.headless=true", "--browser.gatherUsageStats=false"]

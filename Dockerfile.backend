@@ -1,0 +1,23 @@
+FROM python:3.13-slim
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    MCP_CONFIG_PATH=/app/scripts/mcp_config.container.json
+
+# uv / uvx: the Google Sheets MCP server is started with uvx (pin a tag for reproducible builds)
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /usr/local/bin/
+
+RUN useradd --create-home --uid 1000 appuser
+WORKDIR /app
+
+COPY requirements-backend.txt .
+RUN pip install -r requirements-backend.txt
+
+COPY scripts/ ./scripts/
+COPY server/02_stream_server.py ./server/02_stream_server.py
+
+USER appuser
+EXPOSE 8002
+
+CMD ["uvicorn", "02_stream_server:app", "--app-dir", "server", "--host", "0.0.0.0", "--port", "8002"]

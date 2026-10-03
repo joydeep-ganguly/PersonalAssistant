@@ -24,7 +24,7 @@ from langchain_mcp_adapters.client import MultiServerMCPClient
 from langgraph.checkpoint.memory import InMemorySaver
 from langchain.messages import HumanMessage, AIMessageChunk
 
-from scripts import base_tools, prompts, utils
+from scripts import base_tools, gmail_tools, prompts, utils
 
 checkpointer = InMemorySaver()
 tools = None
@@ -37,20 +37,19 @@ class ChatRequest(BaseModel):
 
 
 async def get_tools():
-    mcp_config = utils.load_mcp_config("gmail", "google-sheets")
+    mcp_config = utils.load_mcp_config("google-sheets")
     # print("mcp config loaded:", mcp_config)
 
     client = MultiServerMCPClient(mcp_config)
     mcp_tools = await client.get_tools()
-    tools = mcp_tools + [base_tools.web_search, base_tools.get_weather]
+
+    gmail_tools.init_gmail()
+    new_gmail_tools = [gmail_tools.search_emails, gmail_tools.read_email, gmail_tools.create_draft]
+
+    tools = mcp_tools + new_gmail_tools + [base_tools.web_search, base_tools.get_weather]
 
     # # Filter tools that work with Gemini
     filter_tools = [
-        "delete_email",
-        "batch_modify_emails",
-        "batch_delete_emails",
-        "delete_label",
-        "delete_filter",
         "update_cells",
     ]
 

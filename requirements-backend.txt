@@ -1,0 +1,13 @@
+python-dotenv==1.2.3
+pydantic==2.13.5
+fastapi[standard]==0.141.1
+langchain==1.4.2
+langchain-core==1.6.3
+langchain-google-genai==4.4.0
+langchain-mcp-adapters==0.3.2
+langgraph==1.2.11
+ollama==0.6.2
+requests==2.34.2
+google-auth==2.58.0
+google-auth-httplib2==0.4.2
+google-api-python-client==2.199.0

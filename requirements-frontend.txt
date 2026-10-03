@@ -1,0 +1,4 @@
+streamlit==1.64.0
+httpx==0.28.1
+markdown2==2.5.5
+xhtml2pdf==0.2.20
