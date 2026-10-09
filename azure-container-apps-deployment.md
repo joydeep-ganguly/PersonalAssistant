@@ -195,7 +195,6 @@ __pycache__
 vertex-ai.json
 server/pdf_reports
 .vscode
-.claude
 LICENSE
 README.md
 ```

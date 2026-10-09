@@ -214,8 +214,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
-.claude
-*.claude
 nul
 *.db
 *.db-shm
