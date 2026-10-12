@@ -1,3 +1,4 @@
+![Personal Assistant](./PA.jpg)
 # PersonalAssistant
 
 A personal, single-user agentic AI assistant: a LangChain/LangGraph agent (Google Gemini) with tool access to **Gmail** (search, read, draft) and **Google Sheets** (read/update), served through a FastAPI backend with a Streamlit chat frontend.

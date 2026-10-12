@@ -100,7 +100,7 @@ Since this is a showcase (not production) deployment, two cost-saving changes we
 
 ## Current State (as of 2026-10-09)
 - Gmail + Sheets tools: fully working in Docker and in Azure, via the Python-based Gmail tool and the existing Sheets MCP server.
-- Azure deployment: both `pa-backend` and `pa-backend` live on Container Apps (Consumption plan), frontend protected by Entra ID single-tenant auth, secrets in Key Vault via managed identity, OAuth credentials persisted on Azure Files.
+- Azure deployment: both `pa-backend` and `pa-frontend` live on Container Apps (Consumption plan), frontend protected by Entra ID single-tenant auth, secrets in Key Vault via managed identity, OAuth credentials persisted on Azure Files.
 - Google OAuth: consent screen in production; fresh tokens minted and deployed.
 - Cost tuning: both apps scale to zero (`minReplicas: 0`) when idle.
 - Reusable deployment scripts (`deploy-backend.ps1`, `deploy-frontend-auth.ps1`) exist at the project root for redeploying from scratch, encoding every workaround discovered above — except the `minReplicas` value noted above, which is now stale in those scripts.
